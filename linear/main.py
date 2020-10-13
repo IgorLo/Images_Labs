@@ -3,16 +3,37 @@ import matplotlib.pyplot as plt
 import math
 
 
-def build_histogram(values, width):
+def build_histogram(values, width, left, right):
     result_hist = [0] * width
-    for i in values:
-        result_hist[i] += 1
+    for line in values:
+        for element in line:
+            if element < left:
+                continue
+            if element > right:
+                continue
+            result_hist[element] += 1
     return result_hist
 
 
-def trim_percent(values, percent):
-    remove_size = math.floor(len(values) / 100 * percent)
-    return values[remove_size:-remove_size]
+def trim_percent(percent, original_hist):
+    left = 0
+    right = 255
+    total_space = sum(original_hist)
+    new_space = total_space
+    print(new_space / total_space)
+    while True:
+        left += 1
+        new_space = sum(original_hist[left:right])
+        print(new_space / total_space)
+        print(str(left) + " - " + str(right))
+        if new_space / total_space < 1.0 - percent:
+            return [left, right]
+        right -= 1
+        new_space = sum(original_hist[left:right])
+        print(new_space / total_space)
+        print(str(left) + " - " + str(right))
+        if new_space / total_space < 1.0 - percent:
+            return [left, right]
 
 
 def build_change_matrix(width, a, b):
@@ -30,35 +51,28 @@ def build_change_matrix(width, a, b):
 
 
 if __name__ == '__main__':
-    image = cv2.imread("dog.jpg", 0)
+    image = cv2.imread("dog2.jpg", 0)
     cv2.imshow("Original", image)
 
-    all_values = []
-    for i in image:
-        for j in i:
-            all_values.append(j)
-
-    baseHistogram = build_histogram(all_values, 256)
+    baseHistogram = build_histogram(image, 256, 0, 255)
     plt.plot(baseHistogram)
     plt.show()
 
-    all_values.sort()
-    trimmed = trim_percent(all_values, 5)
-    trimmedHistogram = build_histogram(trimmed, 256)
+    trimmed = trim_percent(0.05, baseHistogram)
+    print(trimmed)
+    trimmedHistogram = build_histogram(image, 256, trimmed[0], trimmed[1])
     plt.plot(trimmedHistogram)
     plt.show()
 
-    transform_matrix = build_change_matrix(256, min(trimmed), max(trimmed))
-    print(transform_matrix)
-    for i in range(len(trimmed)):
-        trimmed[i] = transform_matrix[trimmed[i]]
-    finalHistogram = build_histogram(trimmed, 256)
-    plt.plot(finalHistogram)
-    plt.show()
+    transform_matrix = build_change_matrix(256, trimmed[0], trimmed[1])
 
     for i in range(len(image)):
         for j in range(len(image[0])):
             image[i][j] = transform_matrix[image[i][j]]
+
+    finalHistogram = build_histogram(image, 256, 0, 255)
+    plt.plot(finalHistogram)
+    plt.show()
 
     cv2.imshow("Result", image)
 
