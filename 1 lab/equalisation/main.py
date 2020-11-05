@@ -19,11 +19,26 @@ def build_cumulative(hist):
     return [number / sum(hist) for number in result_array]
 
 
+def normalize(result_matrix):
+    lowerbound = min(result_matrix)
+    upperbound = max(result_matrix)
+    print(lowerbound)
+    print(upperbound)
+    shift = -lowerbound
+    width = upperbound - lowerbound
+    scale = 255 / width
+    normalized_matrix = [((x + shift) * scale) for x in result_matrix]
+    print(min(normalized_matrix))
+    print(max(normalized_matrix))
+    return normalized_matrix
+
+
 def build_equalize_matrix(norm_cumulative):
     result_matrix = [0] * len(norm_cumulative)
     for i in range(len(result_matrix)):
-        result_matrix[i] = min(math.floor(norm_cumulative[i] * len(norm_cumulative)), 255)
-    return result_matrix
+        result_matrix[i] = norm_cumulative[i] * len(norm_cumulative)
+    return normalize(result_matrix)
+    # return result_matrix
 
 
 if __name__ == '__main__':

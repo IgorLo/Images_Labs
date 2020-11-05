@@ -20,20 +20,13 @@ def trim_percent(percent, original_hist):
     right = 255
     total_space = sum(original_hist)
     new_space = total_space
-    print(new_space / total_space)
-    while True:
-        left += 1
+    while new_space / total_space > 1.0 - percent:
+        if original_hist[left] > original_hist[right]:
+            right -= 1
+        else:
+            left += 1
         new_space = sum(original_hist[left:right])
-        print(new_space / total_space)
-        print(str(left) + " - " + str(right))
-        if new_space / total_space < 1.0 - percent:
-            return [left, right]
-        right -= 1
-        new_space = sum(original_hist[left:right])
-        print(new_space / total_space)
-        print(str(left) + " - " + str(right))
-        if new_space / total_space < 1.0 - percent:
-            return [left, right]
+    return [left, right]
 
 
 def build_change_matrix(width, a, b):
