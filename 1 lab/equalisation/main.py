@@ -19,18 +19,18 @@ def build_cumulative(hist):
     return [number / sum(hist) for number in result_array]
 
 
-def normalize(result_matrix):
-    lowerbound = min(result_matrix)
-    upperbound = max(result_matrix)
+def normalize(array):
+    lowerbound = min(array)
+    upperbound = max(array)
     print(lowerbound)
     print(upperbound)
     shift = -lowerbound
     width = upperbound - lowerbound
     scale = 255 / width
-    normalized_matrix = [((x + shift) * scale) for x in result_matrix]
-    print(min(normalized_matrix))
-    print(max(normalized_matrix))
-    return normalized_matrix
+    normalized_array = [((x + shift) * scale) for x in array]
+    print(min(normalized_array))
+    print(max(normalized_array))
+    return normalized_array
 
 
 def build_equalize_matrix(norm_cumulative):
