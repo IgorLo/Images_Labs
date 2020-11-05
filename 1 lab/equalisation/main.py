@@ -42,7 +42,7 @@ def build_equalize_matrix(norm_cumulative):
 
 
 if __name__ == '__main__':
-    image = cv2.imread("husky.jpg", 0)
+    image = cv2.imread("../../images/husky.jpg", 0)
     cv2.imshow("Original", image)
 
     baseHistogram = build_histogram(image, 256)

@@ -44,7 +44,7 @@ def build_change_matrix(width, a, b):
 
 
 if __name__ == '__main__':
-    image = cv2.imread("dog2.jpg", 0)
+    image = cv2.imread("../../images/dog2.jpg", 0)
     cv2.imshow("Original", image)
 
     baseHistogram = build_histogram(image, 256, 0, 255)
