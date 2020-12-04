@@ -54,19 +54,39 @@ def put_noise(image, sigma):
     return normalize2d(noisy, 0, 255)
 
 
+def applyCoreIndividual(expanded, result, size, core, x, y):
+    value = 0
+    for i in range(-size, size + 1):
+        for j in range(-size, size + 1):
+            value += math.floor(expanded[i + x][j + y] * core[i + size][j + size])
+    result[x - size][y - size] = value / (len(core) * len(core))
+    return
+
+
+def applyCore(noised, result, core):
+    expansionSize = math.floor(len(core)/2)
+    print(len(noised))
+    expanded = noised
+    for i in range(0, expansionSize):
+        expanded = expand(expanded)
+    for i in range(1, len(noised) - 1):
+        print(i/len(result) * 100)
+        for j in range(1, len(noised[i]) - 1):
+            applyCoreIndividual(expanded, result, expansionSize, core, i + expansionSize, j + expansionSize)
+    pass
+
+
 if __name__ == '__main__':
-    filename = "../images/dog.jpg"
+    filename = "../images/dog10.jpg"
 
     image = cv2.imread(filename, 0)
+    filtered = cv2.imread(filename, 0)
     image_noised = put_noise(image, 10)
 
-    # print(max(map(max, image)))
-    # print(min(map(min, image)))
-    # print(max(map(max, image_noised)))
-    # print(min(map(min, image_noised)))
+    applyCore(image_noised, filtered, buildGaussianKernel(1, 5))
+    # filtered = normalize2d(filtered, 0, 255)
 
-    print(buildGaussianKernel(1, 5))
-
-    # cv2.imshow("original", image)
-    # cv2.imshow("noised", image_noised)
-    # cv2.waitKey(0)
+    cv2.imshow("original", image)
+    cv2.imshow("noised", image_noised)
+    cv2.imshow("filtered", filtered)
+    cv2.waitKey(0)
