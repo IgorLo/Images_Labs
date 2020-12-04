@@ -22,14 +22,10 @@ def build_cumulative(hist):
 def normalize(array):
     lowerbound = min(array)
     upperbound = max(array)
-    print(lowerbound)
-    print(upperbound)
     shift = -lowerbound
     width = upperbound - lowerbound
     scale = 255 / width
     normalized_array = [((x + shift) * scale) for x in array]
-    print(min(normalized_array))
-    print(max(normalized_array))
     return normalized_array
 
 

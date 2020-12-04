@@ -9,6 +9,11 @@ def normalize2d(array):
     return normalizedImg
 
 
+def normalize16int(array):
+    img_scaled = cv2.normalize(array, dst=None, alpha=0, beta=65535, norm_type=cv2.NORM_MINMAX)
+    return img_scaled
+
+
 def roberts_op(source, x, y):
     g_x = int(source[x + 1][y + 1]) - int(source[x][y])
     g_y = int(source[x][y + 1]) - int(source[x + 1][y])
@@ -45,9 +50,9 @@ if __name__ == '__main__':
     filename = "../images/dog4.jpg"
 
     image = cv2.imread(filename, 0)
-    robertsImage = cv2.imread(filename, 0)
-    prewittImage = cv2.imread(filename, 0)
-    sobelImage = cv2.imread(filename, 0)
+    robertsImage = np.zeros([len(image), len(image[0])], dtype=np.uint16)
+    prewittImage = np.zeros([len(image), len(image[0])], dtype=np.uint16)
+    sobelImage = np.zeros([len(image), len(image[0])], dtype=np.uint16)
 
     image = expand(image)
 
@@ -57,23 +62,10 @@ if __name__ == '__main__':
             prewittImage[i - 1][j - 1] = prewitt_sobel_op(image, i, j, 1)
             sobelImage[i - 1][j - 1] = prewitt_sobel_op(image, i, j, 2)
 
-    print(max(map(max, robertsImage)))
-    print(min(map(min, robertsImage)))
-    # print(max(map(max, prewittImage)))
-    # print(min(map(min, prewittImage)))
-    # print(max(map(max, sobelImage)))
-    # print(min(map(min, sobelImage)))
+    robertsImage = normalize16int(robertsImage)
+    prewittImage = normalize16int(prewittImage)
+    sobelImage = normalize16int(sobelImage)
 
-    robertsImage = normalize2d(robertsImage)
-    prewittImage = normalize2d(prewittImage)
-    sobelImage = normalize2d(sobelImage)
-
-    print(max(map(max, robertsImage)))
-    print(min(map(min, robertsImage)))
-    # print(max(map(max, prewittImage)))
-    # print(min(map(min, prewittImage)))
-    # print(max(map(max, sobelImage)))
-    # print(min(map(min, sobelImage)))
 
     cv2.imshow("Expanded Original", image)
     cv2.imshow("Roberts", robertsImage)
