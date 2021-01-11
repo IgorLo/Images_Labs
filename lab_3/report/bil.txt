@@ -1,0 +1,28 @@
+Y:\Soft\Conda\python.exe C:/Users/94405/PycharmProjects/graphics_2020_public/lab_3/bilaterally/main.py
+sigma: 2; sigma_int: 16; diff: 14.591030946065429
+sigma: 2; sigma_int: 24; diff: 14.590967285587976
+sigma: 2; sigma_int: 32; diff: 14.591002652519894
+sigma: 2; sigma_int: 64; diff: 14.590967285587976
+sigma: 2; sigma_int: 96; diff: 14.590946065428824
+sigma: 4; sigma_int: 16; diff: 14.482044208664899
+sigma: 4; sigma_int: 24; diff: 14.482008841732979
+sigma: 4; sigma_int: 32; diff: 14.482015915119364
+sigma: 4; sigma_int: 64; diff: 14.481959328028294
+sigma: 4; sigma_int: 96; diff: 14.481952254641909
+sigma: 8; sigma_int: 16; diff: 14.359002652519894
+sigma: 8; sigma_int: 24; diff: 14.358733863837312
+sigma: 8; sigma_int: 32; diff: 14.358797524314765
+sigma: 8; sigma_int: 64; diff: 14.35891777188329
+sigma: 8; sigma_int: 96; diff: 14.35893899204244
+sigma: 10; sigma_int: 16; diff: 14.349559681697613
+sigma: 10; sigma_int: 24; diff: 14.349488947833775
+sigma: 10; sigma_int: 32; diff: 14.34951724137931
+sigma: 10; sigma_int: 64; diff: 14.349566755083996
+sigma: 10; sigma_int: 96; diff: 14.349580901856763
+sigma: 16; sigma_int: 16; diff: 14.387777188328913
+sigma: 16; sigma_int: 24; diff: 14.387748894783378
+sigma: 16; sigma_int: 32; diff: 14.387607427055704
+sigma: 16; sigma_int: 64; diff: 14.387685234305923
+sigma: 16; sigma_int: 96; diff: 14.387720601237843
+
+Process finished with exit code 0

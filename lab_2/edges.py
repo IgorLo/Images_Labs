@@ -47,7 +47,7 @@ def expandLine(line):
 
 
 if __name__ == '__main__':
-    filename = "../images/dog4.jpg"
+    filename = "../images/sq.jpg"
 
     image = cv2.imread(filename, 0)
     robertsImage = np.zeros([len(image), len(image[0])], dtype=np.uint16)

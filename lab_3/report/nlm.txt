@@ -1,0 +1,8 @@
+Y:\Soft\Conda\python.exe C:/Users/94405/PycharmProjects/graphics_2020_public/lab_3/nlm/main.py
+sigma: 10; diff: 14.25703574989123
+sigma: 20; diff: 14.25703574989123
+sigma: 30; diff: 14.257035749891225
+sigma: 40; diff: 14.257035749891225
+sigma: 60; diff: 14.257035749891225
+
+Process finished with exit code 0

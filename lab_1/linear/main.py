@@ -44,14 +44,14 @@ def build_change_matrix(width, a, b):
 
 
 if __name__ == '__main__':
-    image = cv2.imread("../../images/sister.jpg", 0)
+    image = cv2.imread("../../images/dog10.jpg", 0)
     cv2.imshow("Original", image)
 
     baseHistogram = build_histogram(image, 256, 0, 255)
     plt.plot(baseHistogram)
     plt.show()
 
-    trimmed = trim_percent(0.05, baseHistogram)
+    trimmed = trim_percent(0.1, baseHistogram)
     print(trimmed)
     trimmedHistogram = build_histogram(image, 256, trimmed[0], trimmed[1])
     plt.plot(trimmedHistogram)

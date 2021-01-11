@@ -1,0 +1,168 @@
+\include{settings}
+
+\begin{document}	% начало документа
+
+% Титульная страница
+\include{titlepage}
+
+% Содержание
+\include{ToC}
+
+
+\section{Цель работы}
+
+Ознакомление с морфологическими операциями.
+
+\section{Программа работы}
+\subsection{Бинаризация изображения}
+\subsection{Наращивание / дилетация}
+\subsection{Эрозия}
+\subsection{Морфологическое открытие / размыкание}
+\subsection{Морфологическое закрытие / замыкание}
+
+\section{Ход выполнения работы}
+
+\subsection{Бинаризация изображения}
+
+Бинаризация изображения — преобразование исходного изображе-ния в градациях серого в бинарное изображение, элементы которогомогут принимать только два значения.
+
+Ниже представлено исходное изображение и его бинаризированный вариант, который будет использоваться далее в лабораторной работе.
+
+\begin{figure}[H]
+	\begin{minipage}[h]{0.49\linewidth}
+		\center{\includegraphics[width=1\linewidth]{../resources/1/source} \\ Исходное изображени}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[h]{0.49\linewidth}
+		\center{\includegraphics[width=1\linewidth]{../out/1/3/binarized_img} \\ Бинаризованное изображение}
+	\end{minipage}
+\end{figure}
+
+\newpage
+
+\subsection{Наращивание / дилетация}
+
+Данная операция производится следующим образом: 
+
+Структурный элемент применяется ко всем пикселам бинарного изображения. Каждый раз, когда центр структурного элемента совмещается с единичным бинарным пикселом, ко всем соответствующим пикселам бинарного изображения применяется логическое сложение с пикселами структурного элемента.  Результаты логического сложения записываются в выходное бинарное изображение.
+
+Ниже представлены результаты применения данного метода с различными параметрами размера структурного элемента к исходному бинаризированному изображению.
+
+\begin{figure}[H]
+	\begin{minipage}[h]{0.49\linewidth}
+		\center{\includegraphics[width=1\linewidth]{../out/1/3/binarized_img} \\ Исходное изображени}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[h]{0.49\linewidth}
+		\center{\includegraphics[width=1\linewidth]{../out/1/3/escalating_img} \\ 3х3}
+	\end{minipage}
+	\vfill
+	\begin{minipage}[h]{0.49\linewidth}
+		\center{\includegraphics[width=1\linewidth]{../out/1/5/escalating_img} \\ 5х5}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[h]{0.49\linewidth}
+		\center{\includegraphics[width=1\linewidth]{../out/1/7/escalating_img} \\ 7х7}
+	\end{minipage}
+\end{figure}
+
+\newpage
+
+\subsection{Эрозия}
+
+Данная операция производится следующим образом: 
+
+Структурный элемент проходит по всем пикселам бинаризированного изображения. Если в некоторой позиции каждый пиксел структурного элемента совпадает с единичным пикселом бинарного изображения, то выполняется логическое сложение центрального пиксела структурного элемента с соответствующим пикселом выходного изображения. 
+
+В результате применения эрозии все объекты, меньшие чем структурный элемент, стираются, объекты, соединённые тонкими линиями становятся разъединёнными и размеры всех объектов уменьшаются.
+
+Ниже представлены результаты применения данного метода с различными параметрами размера структурного элемента к исходному бинаризированному изображению.
+
+\begin{figure}[H]
+	\begin{minipage}[h]{0.49\linewidth}
+		\center{\includegraphics[width=1\linewidth]{../out/1/3/binarized_img} \\ Исходное изображени}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[h]{0.49\linewidth}
+		\center{\includegraphics[width=1\linewidth]{../out/1/3/erosion_img} \\ Структурный элемент размера 3х3}
+	\end{minipage}
+	\vfill
+	\begin{minipage}[h]{0.49\linewidth}
+		\center{\includegraphics[width=1\linewidth]{../out/1/5/erosion_img} \\ Структурный элемент размера 5х5}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[h]{0.49\linewidth}
+		\center{\includegraphics[width=1\linewidth]{../out/1/7/erosion_img} \\ Структурный элемент размера 7х7}
+	\end{minipage}
+\end{figure}
+
+\newpage
+
+\subsection{Морфологическое открытие / размыкание}
+
+Операция эрозии полезна для удаления малых объектов и различных шумов, но у этой операции есть недостаток – все остающиеся объекты уменьшаются в размере. Этого эффекта можно избежать, если после операции эрозии применить операцию наращивания с тем же структурным элементом.
+
+Размыкание отсеивает все объекты, меньшие чем структурный элемент, но при этом помогает избежать сильного уменьшения размера объектов. Также размыкание идеально подходит для удаления линий, толщина которых меньше, чем диаметр структурного элемента. Также важно помнить, что после этой операции контуры объектов становятся более гладкими.
+
+Ниже представлены результаты применения данного метода с различными параметрами размера структурного элемента к исходному бинаризированному изображению.
+
+\begin{figure}[H]
+	\begin{minipage}[h]{0.49\linewidth}
+		\center{\includegraphics[width=1\linewidth]{../out/1/3/binarized_img} \\ Исходное изображени}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[h]{0.49\linewidth}
+		\center{\includegraphics[width=1\linewidth]{../out/1/3/morphological_discovery_img} \\ Структурный элемент размера 3х3}
+	\end{minipage}
+	\vfill
+	\begin{minipage}[h]{0.49\linewidth}
+		\center{\includegraphics[width=1\linewidth]{../out/1/5/morphological_discovery_img} \\ Структурный элемент размера 5х5}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[h]{0.49\linewidth}
+		\center{\includegraphics[width=1\linewidth]{../out/1/7/morphological_discovery_img} \\ Структурный элемент размера 7х7}
+	\end{minipage}
+\end{figure}
+
+\newpage
+
+\subsection{Морфологическое закрытие / замыкание}
+
+Если к изображению применить сначала операцию наращивания, то мы сможем избавиться от малых дыр и щелей, но при этом произойдёт увеличение контура объекта. Избежать этого увеличения позволяет операция эрозия, выполненная сразу после наращивания с тем же структурным элементом.
+
+Ниже представлены результаты применения данного метода с различными параметрами размера структурного элемента к исходному бинаризированному изображению.
+
+\begin{figure}[H]
+	\begin{minipage}[h]{0.49\linewidth}
+		\center{\includegraphics[width=1\linewidth]{../out/1/3/binarized_img} \\ Исходное изображени}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[h]{0.49\linewidth}
+		\center{\includegraphics[width=1\linewidth]{../out/1/3/morphological_closure_img} \\ Структурный элемент размера 3х3}
+	\end{minipage}
+	\vfill
+	\begin{minipage}[h]{0.49\linewidth}
+		\center{\includegraphics[width=1\linewidth]{../out/1/5/morphological_closure_img} \\ Структурный элемент размера 5х5}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[h]{0.49\linewidth}
+		\center{\includegraphics[width=1\linewidth]{../out/1/7/morphological_closure_img} \\ Структурный элемент размера 7х7}
+	\end{minipage}
+\end{figure}
+
+
+\section{Вывод}
+
+В данной лабораторной работе были рассмотрены следующие орфологические операции: дилетация, эрозия, морфологическое открытие, морфологическое закрытие. Они помогают удалить с изображения мелкие объекты и разлицные шумы, дыры и щели. Совместное выполнение дилетации и эрозии на одном изображении помогает устранить недостатки, которые имеют данные операции при выполнении по отдельности.
+
+\vfill % заполнить всё доступное ниже пространство
+
+\newpage
+\section{Листинг}
+
+\lstinputlisting[
+label=code:equalization,
+]{../main.py}
+\parindent=1cm
+
+\end{document}

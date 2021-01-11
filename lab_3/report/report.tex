@@ -1,0 +1,386 @@
+\include{settings}
+
+\begin{document}	% начало документа
+
+% Титульная страница
+\include{titlepage}
+
+% Содержание
+\include{ToC}
+
+
+\section{Цель работы}
+
+Ознакомиться со способами сглаживания изображений.
+
+
+\section{Ход выполнения работы}
+
+
+\subsection{Наложение шума}
+
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[scale=1.0]{../noise/out/1/resource_img}
+		\caption{Исходное изображение }
+		%		\label{pic:source_pic_1} % название для ссылок внутри кода
+	\end{center}
+\end{figure}
+
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[scale=1.0]{../noise/out/1/noise_img}
+		\caption{Изображение с наложенным шумом}
+		%		\label{pic:source_pic_1} % название для ссылок внутри кода
+	\end{center}
+\end{figure}
+
+\subsection{Билотеральный метод}
+
+Фильтр исполльзует Гаусово распределение учитывая пространственную разность и разность интенсивностей.
+
+Формула для билатерального фильтра:
+
+$BF[I]_p = \frac{1}{W_p} \sum\limits_{q \in S} G_{\sigma_s} (||p-q||) G_{\sigma_r} (|I_p-I_q|) I_q$
+
+Ниже представлены результаты применения различных значений сигм (пространственной и интенсивностей):
+
+\begin{figure}[H]
+	\begin{minipage}[h]{0.49\linewidth}
+		\center{\includegraphics[width=1\linewidth]{../bilaterally/out/1/resource_img} \\ Изображение с шумом}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[h]{0.49\linewidth}
+		\center{\includegraphics[width=1\linewidth]{../bilaterally/out/111/bilateral_img_2_16} \\ Sigma = 2}
+	\end{minipage}
+	\vfill
+	\begin{minipage}[h]{0.49\linewidth}
+		\center{\includegraphics[width=1\linewidth]{../bilaterally/out/111/bilateral_img_4_16} \\ Sigma = 4}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[h]{0.49\linewidth}
+		\center{\includegraphics[width=1\linewidth]{../bilaterally/out/111/bilateral_img_8_16} \\ Sigma = 6}
+	\end{minipage}
+	\vfill
+	\begin{minipage}[h]{0.49\linewidth}
+		\center{\includegraphics[width=1\linewidth]{../bilaterally/out/111/bilateral_img_10_16} \\ Sigma = 8}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[h]{0.49\linewidth}
+		\center{\includegraphics[width=1\linewidth]{../bilaterally/out/111/bilateral_img_16_16} \\ Sigma = 10}
+	\end{minipage}	
+	\caption{$\sigma интенсивности = 16$}
+\end{figure}
+
+\begin{figure}[H]
+	\begin{minipage}[h]{0.49\linewidth}
+		\center{\includegraphics[width=1\linewidth]{../bilaterally/out/1/resource_img} \\ Изображение с шумом}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[h]{0.49\linewidth}
+		\center{\includegraphics[width=1\linewidth]{../bilaterally/out/111/bilateral_img_2_24} \\ Sigma = 2}
+	\end{minipage}
+	\vfill
+	\begin{minipage}[h]{0.49\linewidth}
+		\center{\includegraphics[width=1\linewidth]{../bilaterally/out/111/bilateral_img_4_24} \\ Sigma = 4}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[h]{0.49\linewidth}
+		\center{\includegraphics[width=1\linewidth]{../bilaterally/out/111/bilateral_img_8_24} \\ Sigma = 6}
+	\end{minipage}
+	\vfill
+	\begin{minipage}[h]{0.49\linewidth}
+		\center{\includegraphics[width=1\linewidth]{../bilaterally/out/111/bilateral_img_10_24} \\ Sigma = 8}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[h]{0.49\linewidth}
+		\center{\includegraphics[width=1\linewidth]{../bilaterally/out/111/bilateral_img_16_24} \\ Sigma = 10}
+	\end{minipage}	
+	\caption{$\sigma интенсивности = 24$}
+\end{figure}
+
+\begin{figure}[H]
+	\begin{minipage}[h]{0.49\linewidth}
+		\center{\includegraphics[width=1\linewidth]{../bilaterally/out/1/resource_img} \\ Изображение с шумом}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[h]{0.49\linewidth}
+		\center{\includegraphics[width=1\linewidth]{../bilaterally/out/111/bilateral_img_2_32} \\ Sigma = 2}
+	\end{minipage}
+	\vfill
+	\begin{minipage}[h]{0.49\linewidth}
+		\center{\includegraphics[width=1\linewidth]{../bilaterally/out/111/bilateral_img_4_32} \\ Sigma = 4}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[h]{0.49\linewidth}
+		\center{\includegraphics[width=1\linewidth]{../bilaterally/out/111/bilateral_img_8_32} \\ Sigma = 6}
+	\end{minipage}
+	\vfill
+	\begin{minipage}[h]{0.49\linewidth}
+		\center{\includegraphics[width=1\linewidth]{../bilaterally/out/111/bilateral_img_10_32} \\ Sigma = 8}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[h]{0.49\linewidth}
+		\center{\includegraphics[width=1\linewidth]{../bilaterally/out/111/bilateral_img_16_32} \\ Sigma = 10}
+	\end{minipage}	
+	\caption{$\sigma интенсивности = 32$}
+\end{figure}
+
+\begin{figure}[H]
+	\begin{minipage}[h]{0.49\linewidth}
+		\center{\includegraphics[width=1\linewidth]{../bilaterally/out/1/resource_img} \\ Изображение с шумом}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[h]{0.49\linewidth}
+		\center{\includegraphics[width=1\linewidth]{../bilaterally/out/111/bilateral_img_2_64} \\ Sigma = 2}
+	\end{minipage}
+	\vfill
+	\begin{minipage}[h]{0.49\linewidth}
+		\center{\includegraphics[width=1\linewidth]{../bilaterally/out/111/bilateral_img_4_64} \\ Sigma = 4}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[h]{0.49\linewidth}
+		\center{\includegraphics[width=1\linewidth]{../bilaterally/out/111/bilateral_img_8_64} \\ Sigma = 6}
+	\end{minipage}
+	\vfill
+	\begin{minipage}[h]{0.49\linewidth}
+		\center{\includegraphics[width=1\linewidth]{../bilaterally/out/111/bilateral_img_10_64} \\ Sigma = 8}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[h]{0.49\linewidth}
+		\center{\includegraphics[width=1\linewidth]{../bilaterally/out/111/bilateral_img_16_64} \\ Sigma = 10}
+	\end{minipage}	
+	\caption{$\sigma интенсивности = 64$}
+\end{figure}
+
+\begin{figure}[H]
+	\begin{minipage}[h]{0.49\linewidth}
+		\center{\includegraphics[width=1\linewidth]{../bilaterally/out/1/resource_img} \\ Изображение с шумом}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[h]{0.49\linewidth}
+		\center{\includegraphics[width=1\linewidth]{../bilaterally/out/111/bilateral_img_2_96} \\ Sigma = 2}
+	\end{minipage}
+	\vfill
+	\begin{minipage}[h]{0.49\linewidth}
+		\center{\includegraphics[width=1\linewidth]{../bilaterally/out/111/bilateral_img_4_96} \\ Sigma = 4}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[h]{0.49\linewidth}
+		\center{\includegraphics[width=1\linewidth]{../bilaterally/out/111/bilateral_img_8_96} \\ Sigma = 6}
+	\end{minipage}
+	\vfill
+	\begin{minipage}[h]{0.49\linewidth}
+		\center{\includegraphics[width=1\linewidth]{../bilaterally/out/111/bilateral_img_10_96} \\ Sigma = 8}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[h]{0.49\linewidth}
+		\center{\includegraphics[width=1\linewidth]{../bilaterally/out/111/bilateral_img_16_96} \\ Sigma = 10}
+	\end{minipage}	
+	\caption{$\sigma интенсивности = 96$}
+\end{figure}
+
+\begin{table}[H]
+	\caption{Сравнение модулей разности полученных изображений}
+	\label{tabular:timesandtenses}
+	\begin{center}
+		\begin{tabular}{ccc}
+			Пространственая сигма & Сигма итенсивности & Модуль разности \\
+			2 & 16 & 14.75439 \\
+			2 & 24 & 14.75462 \\
+			2 & 32 & 14.75463 \\
+			2 & 64 & 14.75466 \\
+			2 & 96 & 14.75465 \\
+			4 & 16 & 14.79203 \\
+			4 & 24 & 14.79222 \\
+			4 & 32 & 14.79230 \\
+			4 & 64 & 14.79238 \\
+			4 & 96 & 14.79240 \\
+			8 & 16 & 14.92022 \\
+			8 & 24 & 14.92071 \\
+			8 & 32 & 14.92090 \\
+			8 & 64 & 14.92113 \\
+			8 & 96 & 14.92117 \\
+			10 & 16 & 15.00214 \\
+			10 & 24 & 15.00265 \\
+			10 & 32 & 15.00268 \\
+			10 & 64 & 15.00292 \\
+			10 & 96 & 15.00298 \\
+			16 & 16 & 15.31712 \\
+			16 & 24 & 15.31827 \\
+			16 & 32 & 15.31879 \\
+			16 & 64 & 15.31928 \\
+			16 & 96 & 15.31930 \\
+		\end{tabular}
+	\end{center}
+\end{table}
+
+Вывод:
+
+Лучший показатель наблюдется при следующих показателях: пространственная $\sigma$ = 16, $\sigma$ интенсивности = 2.
+
+
+\subsection{Метод Гауса}
+
+Первым шагом является нахождение ядра гауса по следующей формуле:
+
+G(x,y) = $\frac{1}{2 \pi \sigma^2} e^{-\frac{x^2+y^2}{2\sigma^2}}$
+
+Затем используется операция всёртки для сглаживания изображения:
+
+G[i,j] = $\sum\limits_{u=-k}^k \sum\limits_{v=-k}^k H[u,v]F[i+u,j+v]$
+
+Формула операции сглаживания Гауссовым фильтром:
+
+$GB[I]_p = \sum\limits_{q \in S} G_\sigma (||p-q||)I_q$
+
+Ниже представлены результаты применения различных значений параметра $\sigma$:
+\begin{figure}[H]
+	\begin{minipage}[h]{0.49\linewidth}
+		\center{\includegraphics[width=1\linewidth]{../gaus/out/1/resource_img} \\ Изображение с шумом}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[h]{0.49\linewidth}
+		\center{\includegraphics[width=1\linewidth]{../gaus/out/1/gauss_img_sigma_2} \\ Sigma = 2}
+	\end{minipage}
+	\vfill
+	\begin{minipage}[h]{0.49\linewidth}
+		\center{\includegraphics[width=1\linewidth]{../gaus/out/1/gauss_img_sigma_4} \\ Sigma = 4}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[h]{0.49\linewidth}
+		\center{\includegraphics[width=1\linewidth]{../gaus/out/1/gauss_img_sigma_6} \\ Sigma = 6}
+	\end{minipage}
+	\vfill
+	\begin{minipage}[h]{0.49\linewidth}
+		\center{\includegraphics[width=1\linewidth]{../gaus/out/1/gauss_img_sigma_8} \\ Sigma = 8}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[h]{0.49\linewidth}
+		\center{\includegraphics[width=1\linewidth]{../gaus/out/1/gauss_img_sigma_10} \\ Sigma = 10}
+	\end{minipage}	
+	\vfill
+	\begin{minipage}[h]{0.49\linewidth}
+		\center{\includegraphics[width=1\linewidth]{../gaus/out/1/gauss_img_sigma_12} \\ Sigma = 12}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[h]{0.49\linewidth}
+		\center{\includegraphics[width=1\linewidth]{../gaus/out/1/gauss_img_sigma_14} \\ Sigma = 14}
+	\end{minipage}	
+\end{figure}
+
+\begin{table}[H]
+	\caption{Сравнение модулей разности полученных изображений}
+	\label{tabular:timesandtenses}
+	\begin{center}
+		\begin{tabular}{ccc}
+			Сигма итенсивности & Модуль разности \\
+			2 & 18.5538 \\
+			4 & 19.3089 \\
+			6 & 19.4719 \\
+			8 & 19.5307 \\
+			10 & 19.5575 \\
+			12 & 19.5719 \\
+			14 & 19.5809 \\
+			16 & 19.5865 \\
+		\end{tabular}
+	\end{center}
+\end{table}
+
+Вывод:
+
+Наилучший результат даёт значение $\sigma$ равное 2. 
+
+\subsection{Метод нелокальных средних}
+
+Данный фильтр использует Гауссово распределение с учётом разности расстояния до похожих участков изображения.\\
+
+Формула для фильтра нелокальными средними:
+
+$I_d(j) = \sum\limits_{j \in I} \omega (i,j) I(j)$
+
+Формула для веса фильтра:
+$\omega(i,j) = \frac{1}{Z(i)} e^{- \frac{||I(N_i)-I(N_j)||}{h^2}}$
+
+Формула нормирующего делителя фильтра:
+$Z(i) = \sum\limits_{j \in I} e^{- \frac{||I(N_i)-I(N_j)||}{h^2}}$
+
+Ниже представлены результаты применения различных значений параметра $\sigma$:
+
+\begin{figure}[H]
+	\begin{minipage}[h]{0.49\linewidth}
+		\center{\includegraphics[width=1\linewidth]{../nlm/out/1/resource_img} \\ Изображение с шумом}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[h]{0.49\linewidth}
+		\center{\includegraphics[width=1\linewidth]{../nlm/out/1/nlm_img_10} \\ Sigma = 10}
+	\end{minipage}
+	\vfill
+	\begin{minipage}[h]{0.49\linewidth}
+		\center{\includegraphics[width=1\linewidth]{../nlm/out/1/nlm_img_20} \\ Sigma = 20}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[h]{0.49\linewidth}
+		\center{\includegraphics[width=1\linewidth]{../nlm/out/1/nlm_img_30} \\ Sigma = 30}
+	\end{minipage}
+	\vfill
+	\begin{minipage}[h]{0.49\linewidth}
+		\center{\includegraphics[width=1\linewidth]{../nlm/out/1/nlm_img_40} \\ Sigma = 40}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[h]{0.49\linewidth}
+		\center{\includegraphics[width=1\linewidth]{../nlm/out/1/nlm_img_60} \\ Sigma = 60}
+	\end{minipage}
+\end{figure}
+
+\begin{table}[H]
+	\caption{Сравнение модулей разности полученных изображений}
+	\label{tabular:timesandtenses}
+	\begin{center}
+		\begin{tabular}{ccc}
+			Сигма итенсивности & Модуль разности \\
+			10 & 14.699821190406311 \\
+			20 & 14.699821190406306 \\
+			30 & 14.699821190406302 \\
+			40 & 14.699821190406311 \\
+			60 & 14.699821190406308 \\
+		\end{tabular}
+	\end{center}
+\end{table}
+
+Вывод:
+
+Наилучший результат наблюдается при $\sigma$ = 30.
+
+\section{Вывод}
+Результаты эксперимонтов показали, что лучшем фильтром является фильтр нелокальных средних. Но он имеет существенный недостаток - производительность.
+
+\vfill % заполнить всё доступное ниже пространство
+
+\section{Листинг}
+
+\lstinputlisting[
+label=code:equalization,
+caption={Наложение шума},
+]{../noise/main.py}
+\parindent=1cm
+
+\lstinputlisting[
+	label=code:linearExtension,
+	caption={Билотеральный метод},
+]{../bilaterally/main(1).py}
+\parindent=1cm
+
+\lstinputlisting[
+label=code:equalization,
+caption={Метод Гауса},
+]{../gaus/main.py}
+\parindent=1cm
+
+\lstinputlisting[
+label=code:equalization,
+caption={Метод нелокальных средних},
+]{../nlm/main.py}
+\parindent=1cm
+
+\end{document}

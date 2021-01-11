@@ -1,0 +1,11 @@
+Y:\Soft\Conda\python.exe C:/Users/94405/PycharmProjects/graphics_2020_public/lab_3/gaus/main.py
+sigma: 10; diff: 15.487023872679044
+sigma: 2; diff: 15.226228116710875
+sigma: 4; diff: 15.418595932802829
+sigma: 6; diff: 15.462507515473034
+sigma: 8; diff: 15.479455349248452
+sigma: 12; diff: 15.491557913351016
+sigma: 14; diff: 15.494111405835543
+sigma: 16; diff: 15.496141467727675
+
+Process finished with exit code 0
